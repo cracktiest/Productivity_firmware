@@ -1,3 +1,5 @@
+## LOG CHANGED
+
   PATCH 1.5 LOG CHANGED :
   + Minimize microcontroller from freezing after fail reading to server "bacadata function"
                                                                                                                                                                          
@@ -5,3 +7,8 @@
   + DELAY BASED ON HOW LONG SERVER RESPONDS TO MICROCONTROLLER
   + lcd.clear() FUNCTION HAS BEEN ADDED AFTER SCANNING 
   + OK BUTTON / TOMBOL10 HAS BEEN ADDED TWICE TO SCAN "BACADATA"
+  
+## LIBRARY
+  RDM6300
+  [RDM 6300] (https://github.com/arduino12/rdm6300)
+  
