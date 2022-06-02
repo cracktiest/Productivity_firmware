@@ -52,14 +52,12 @@ String tombol7 = "7";
 String tombol8 = "8";
 String tombol9 = "9";
 String tombol10 = "10";
-String tombol11 = "11";
 
 IRrecv irDetect(IR_PIN);
 decode_results irIn;
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void(* Reset) (void) = 0;
-
 
 void beep (int bep){
   digitalWrite(LED_B, HIGH); 
@@ -75,7 +73,7 @@ void bacadata(){
     lcd.print("SERVER UNCONNECT");
     beep(100);
     Reset();
-      }
+  }
   urlText = "/robotik/monitoring/lihatdata.php?id_device=";
   urlText += id_device;
   client.print(String("GET ")+urlText+" HTTP/1.1\r\n" +"Host: "+host+ "\r\n" +"Connection: close\r\n\r\n");
@@ -83,7 +81,14 @@ void bacadata(){
   while(!client.available()){
     delay(1);
     ulangclient++;
+    if(ulangclient>=2000){
+      lcd.setCursor(0,0);
+      lcd.print("SERVER UNRESPOND");
+      lcd.setCursor(0,1);
+      lcd.print("SILAHKAN  TUNGGU");
+      Reset();
     }
+  }
   Serial1.print("Lamanya delay "); Serial1.print(ulangclient); Serial1.println(" ms");
   while (client.available()){
   Serial1.println(urlText);
@@ -102,18 +107,12 @@ void bacadata(){
     }
   if (finder.getString("Target","]",webtext,25) !=0){
     String target = webtext;
-    lcd.setCursor(9,1);lcd.print("Tar:");
-    lcd.setCursor(13,1);lcd.print(target);
     Serial1.print("Target = "); Serial1.println(target);}
   if (finder.getString("fsl","]",webtext,25) !=0){
     String fasilitas = webtext;
-    lcd.setCursor(9,1);lcd.print("Tar:");
-    lcd.setCursor(13,1);lcd.print(target);
     Serial1.print("Fasilitas = "); Serial1.println(fasilitas);}
   if (finder.getString("spv","]",webtext,25) !=0){
     String spv = webtext;
-    lcd.setCursor(9,1);lcd.print("Tar:");
-    lcd.setCursor(13,1);lcd.print(target);
     Serial1.print("SPV = "); Serial1.println(spv);}
   }    
 }
@@ -344,10 +343,10 @@ void setup() {
 }
 
 void loop() {
-  if (irDetect.decode(&irIn)) 
+  if (IrReceiver.decode(&irIn)) 
   {
     decodeIR(); 
-    irDetect.resume(); 
+    IrReceiver.resume(); 
   }
   rfid();
 }
