@@ -29,7 +29,7 @@ const char* host ="10.5.0.138"; //10.5.0.108
 const int port = 80;
 String proses,out,target;
 
-//setting ip
+//setting ip 
 IPAddress local_IP(10,5,1,222);//249
 IPAddress gateway(10,5,1,1);//(10,5,0,30);
 IPAddress subnet(255,255,0,0);
@@ -108,12 +108,12 @@ void bacadata(){
   if (finder.getString("Target","]",webtext,25) !=0){
     String target = webtext;
     Serial1.print("Target = "); Serial1.println(target);}
-  if (finder.getString("fsl","]",webtext,25) !=0){
-    String fasilitas = webtext;
-    Serial1.print("Fasilitas = "); Serial1.println(fasilitas);}
-  if (finder.getString("spv","]",webtext,25) !=0){
-    String spv = webtext;
-    Serial1.print("SPV = "); Serial1.println(spv);}
+  // if (finder.getString("fsl","]",webtext,25) !=0){
+  //   String fasilitas = webtext;
+  //   Serial1.print("Fasilitas = "); Serial1.println(fasilitas);}
+  // if (finder.getString("spv","]",webtext,25) !=0){
+  //   String spv = webtext;
+  //   Serial1.print("SPV = "); Serial1.println(spv);}
   }    
 }
    
@@ -343,7 +343,7 @@ void setup() {
 }
 
 void loop() {
-  if (IrReceiver.decode(&irIn)) 
+  if (irDetect.decode(&irIn)) 
   {
     decodeIR(); 
     IrReceiver.resume(); 
