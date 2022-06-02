@@ -10,4 +10,4 @@
   
 ## LIBRARY
   RDM6300
-  [I'm an inline-style link](https://www.google.com)
+  [RDM 6300](https://github.com/arduino12/rdm6300)
