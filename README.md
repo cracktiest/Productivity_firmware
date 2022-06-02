@@ -9,5 +9,6 @@
   + OK BUTTON / TOMBOL10 HAS BEEN ADDED TWICE TO SCAN "BACADATA"
   
 ## LIBRARY
-  RDM6300
   [RDM 6300](https://github.com/arduino12/rdm6300)
+  [Text Finder](https://github.com/tardate/TextFinder)
+  [LCD_I2C](https://github.com/johnrickman/LiquidCrystal_I2C)
