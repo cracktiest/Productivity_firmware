@@ -10,5 +10,8 @@
   
 ## LIBRARY
   [RDM 6300](https://github.com/arduino12/rdm6300)
+  
   [Text Finder](https://github.com/tardate/TextFinder)
-  [LCD_I2C](https://github.com/johnrickman/LiquidCrystal_I2C)
+ 
+ [LCD_I2C](https://github.com/johnrickman/LiquidCrystal_I2C)
+ 
