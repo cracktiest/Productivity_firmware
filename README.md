@@ -3,25 +3,25 @@
 
 ##  THERE ARE 2 BOARDS, CHECK THE BOARD FIRST BEFORE UPLOAD:
 ###  D1 R1 (RETIRED)
-  [env:d1]
-  platform = espressif8266
-  board = d1
++  [env:d1]
++  platform = espressif8266
++  board = d1
   _______________________________
   
-  // #define PIN      D8 
-  // int NUMPIXELS = 8;
-  // int LED_B =D10;
-  // const int IR_PIN =D5;
++  // #define PIN      D8 
++  // int NUMPIXELS = 8;
++  // int LED_B =D10;
++  // const int IR_PIN =D5;
 
 ###  D1 R2 MINI
-  [env:d1_mini]
-  platform = espressif8266
-  board = d1_mini
++  [env:d1_mini]
++  platform = espressif8266
++  board = d1_mini
   _______________________________
-  // #define PIN      D5
-  // int NUMPIXELS = 8;
-  // int LED_B =D8;
-  // const int IR_PIN =D0;
++  // #define PIN      D5
++  // int NUMPIXELS = 8;
++  // int LED_B =D8;
++  // const int IR_PIN =D0;
 
 
 
