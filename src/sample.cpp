@@ -51,18 +51,20 @@
 #ifdef __AVR__
 #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
 #endif
-#define PIN      D5
+#define PIN      D8 
 int NUMPIXELS = 8;
-int LED_B =D8;
-const int IR_PIN =D0;
+int LED_B =D10;
+const int IR_PIN =D5;
 int ts,h,mr,kw,bt,p,s,l,c=0;
+int koneksiwifi=0;
 
 WiFiClient client;
 TextFinder  finder(client);
 char webtext[25];
 //koneksi wifi
-const char* ssid     = "ROBOT";
-const char* password = "robot8888";
+char* ssid     = "ROBOT V3";
+char* ssid2    = "ROBOT V3";
+const char* password = "robot%8888";
 const char* host ="10.5.0.204"; //10.5.0.108
 const int port = 80;
 int ulangclient;
@@ -611,10 +613,17 @@ void setup() {
   rdm6300.begin(RDM6300_RX_PIN);
   WiFi.config(local_IP,gateway,subnet);
   while (WiFi.status() != WL_CONNECTED) {
+    koneksiwifi++;
     beep(50);
     Serial1.print(".");
     lcd.setCursor(0,0);
     lcd.print("Wifi Connecting.");
+    // if(koneksiwifi>100){
+    //   ssid=ssid2;
+    //   setup();
+    //   break;
+    // }
+    // continue;
   }
   Serial1.println("");
   Serial1.println("WiFi connected.");
