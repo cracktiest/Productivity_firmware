@@ -1,3 +1,6 @@
+## SERIAL DRIVER
++ [FT 232] (https://www.ftdichip.com/old2020/Drivers/VCP.htm)
++ [CH 340] (https://sparks.gogo.co.nz/ch340.html)
 
 ## [IP LOKAL ROBOTIK](https://bit.ly/3bfRsU1)
 
