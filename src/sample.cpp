@@ -63,16 +63,16 @@ TextFinder  finder(client);
 char webtext[25];
 //koneksi wifi
 char* ssid     = "ROBOT V3";
-char* ssid2    = "ROBOT V3";
+// char* ssid2    = "ROBOT V3";
 const char* password = "robot%8888";
 const char* host ="10.5.0.204"; //10.5.0.108
 const int port = 80;
 int ulangclient;
 String proses,out,target;
-IPAddress local_IP(10,5,1,225);//249
-IPAddress gateway(10,5,1,1);//(10,5,0,30);
+IPAddress local_IP(10,5,2,156);//249
+IPAddress gateway(10,5,2,1);//(10,5,0,30);
 IPAddress subnet(255,255,0,0);
-char* id_device ="K6-100"; //41
+char* id_device ="L10-6"; //41
 char* link = "GM1";
 String urlMode;
 String urlID;
@@ -246,23 +246,16 @@ void bacadata(){
       c = change.toInt();
   Serial1.print("P.Layout = "); Serial1.println(c);
     } 
-  
-  // if (finder.getString("fsl","]",webtext,25) !=0){
-  //   String fasilitas = webtext;
-  //   Serial1.print("Fasilitas = "); Serial1.println(fasilitas);}
-  // if (finder.getString("spv","]",webtext,25) !=0){
-  //   String spv = webtext;
-  //   Serial1.print("SPV = "); Serial1.println(spv);}
   }    
-  // proses,out,target="0";
-  // webtext=0;
   rgb();
+  Serial1.println("Serial ended");
 }
 
 void decodeIR() // Indicate what key is pressed
 { 
   switch (irIn.value) { // compare the value to the following cases
     case 0xFFA25D: // if the value is equal to 0xFD00FF
+      Serial1.println("Button 1 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol1;
@@ -290,6 +283,7 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break;
     case 0xFF629D:
+      Serial1.println("Button 2 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol2;
@@ -318,6 +312,7 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break;
     case 0xFFE21D:
+      Serial1.println("Button 3 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol3;
@@ -345,6 +340,7 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break;
     case 0xFF22DD:
+      Serial1.println("Button 4 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol4;
@@ -372,6 +368,7 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break;
     case 0xFF02FD:
+      Serial1.println("Button 5 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol5;
@@ -399,6 +396,7 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break ;
     case 0xFFC23D:
+      Serial1.println("Button 6 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol6;
@@ -426,6 +424,7 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break ;
     case 0xFFE01F:
+      Serial1.println("Button 7 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol7;
@@ -453,6 +452,7 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break ;
     case 0xFFA857:
+      Serial1.println("Button 8 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol8;
@@ -480,6 +480,7 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break ;
     case 0xFF906F:
+      Serial1.println("Button 9 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol9;
@@ -509,6 +510,7 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break;
     case 0xFF38C7:
+      Serial1.println("Button 10 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol10;
@@ -577,19 +579,19 @@ void rfid(){
     Serial1.println(urlID);
     // delay(100);  
     ulangclient = 0;
-        // while(!client.available()){
-        //   delay(1);
-        //   ulangclient++;
-        //   if(ulangclient>=5000){
-        //     lcd.setCursor(0,0);
-        //     lcd.print("SERVER UNRESPOND");
-        //     lcd.setCursor(0,1);
-        //     lcd.print("SILAHKAN  TUNGGU");
-        //     Reset();
-        //   }
-        // }
+        while(!client.available()){
+          delay(1);
+          ulangclient++;
+          if(ulangclient>=5000){
+            lcd.setCursor(0,0);
+            lcd.print("SERVER UNRESPOND");
+            lcd.setCursor(0,1);
+            lcd.print("SILAHKAN  TUNGGU");
+            Reset();
+          }
+        }
   }
-  // Serial1.print("Latency from writing rfid to server : "); Serial1.println(ulangclient);      
+  Serial1.print("Latency from writing rfid to server : "); Serial1.println(ulangclient);      
   rdm6300.end();
   rdm6300.begin(RDM6300_RX_PIN);
   bacadata();
@@ -598,7 +600,7 @@ void rfid(){
 void setup() {
   pixels.begin();
   pixels.clear();
-  Serial1.begin(9600);
+  Serial1.begin(115200);
   Serial1.print("Connecting to ");
   Serial1.println(ssid);
   WiFi.mode(WIFI_STA);
