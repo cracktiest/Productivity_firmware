@@ -6,6 +6,8 @@
 
 ##  THERE ARE 2 BOARDS, CHECK THE BOARD FIRST BEFORE UPLOAD:
 ###  D1 R1 (RETIRED)
+![image](https://github.com/cracktiest/Productivity_firmware/assets/104487851/a4265eb7-d929-47b9-9fd6-8d9bc97c6264)
+
 +  [env:d1]
 +  platform = espressif8266
 +  board = d1
@@ -17,6 +19,8 @@
 +  // const int IR_PIN =D5;
 
 ###  D1 R2 MINI
+![image](https://github.com/cracktiest/Productivity_firmware/assets/104487851/09faff04-5676-4ae0-b706-454d825e37f6)
+
 +  [env:d1_mini]
 +  platform = espressif8266
 +  board = d1_mini
@@ -35,6 +39,7 @@ WiFi disconnected after analog pin is used, will fix later. Even ESP community c
 ## LOG CHANGED
 
 ### PATCH 1.8
++ Much feature has been added, can't explain one by one
 + More stable program
 + ESP8266MultiWifi function has been added
 + Bundle program has been added
