@@ -27,10 +27,19 @@
 +  // const int IR_PIN =D0;
 
 
-
+## BUG
+WiFi disconnected after analog pin is used, will fix later. Even ESP community can't fix this bug 
+![image](https://github.com/cracktiest/PerOP-Operator/assets/104487851/4a29154b-5c4a-4743-bda3-ca5eb43eb600)
 
 
 ## LOG CHANGED
+
+### PATCH 1.8
++ More stable program
++ ESP8266MultiWifi function has been added
++ Bundle program has been added
++ Limit switch sensor has been added to detect hanger's movement 
++ Will catch more bug
 
 ### PATCH 1.7
 + LCD mode has been changed (Output/Target)
