@@ -1,17 +1,15 @@
 /*
 
 
-  05 JUNI 202
+  05 JUNI 2024
   FEATURE CHANGED :
   + TOO MUCH
 
-  this program is only for D1R1 board type
+  this program is only for D1R2 board type
 */
-//#define DEBUG_ESP_PORT Serial
 
 #include <Arduino.h>
 #include <rdm6300.h>
-//#include <WiFiUdp.h>
 //#include <ESP8266WiFi.h>
 #include <ESP8266WiFiMulti.h>
 #include <TextFinder.h>
@@ -20,15 +18,14 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #define RDM6300_RX_PIN 13 // can be only 13 - on esp8266 force hardware uart!
-#define READ_LED_PIN 16
+#define READ_LED_PIN 15
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
 #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
 #endif
-#define PIN D8 //LED RGBSTRIP
+#define PIN D6 //LED RGBSTRIP
 
 //unsigned long starmilis, curenmilis;
-
 unsigned long starmilis, curenmilis;
 const unsigned long periode = 5000;
 //const unsigned long periode =5000;
@@ -44,25 +41,24 @@ const char* host = "10.5.2.222"; //10.5.0.108
 const int port = 80;
 uint16_t connectTimeOutPerAP = 5000; //Defines the TimeOut(ms) which will be used to try and connect with any specific Access Point
 
+
 int limitSwitch = A0;
-int increment = 1; //penambahan ketika sensor limit switch terdeteksi
 int NUMPIXELS = 8;
-int LED_B = D10;
+int LED_B = D8;
 int remot;
-int a, tapHanger = 0;
-const int IR_PIN = D5;
+const int IR_PIN = D0;
 int ts, h, mr, kw, bt, p, s, l, c = 0;
 String getID,targetShow;
 WiFiClient client;
 TextFinder  finder(client);
 char webtext[25];
-int ulangclient, ulanghost;
+int ulangclient, ulanghost,a,tapHanger;
 String proses, out, target;
 int output;
 //IPAddress local_IP(10,5,2,202); //249
 //IPAddress gateway(10,5,2,1); //(10,5,0,30);
 //IPAddress subnet(255,255,0,0);
-char* id_device; //41
+char* id_device;//41
 //char* id_device = "LF-33"; //41
 char* link = "GM1";
 String urlMode;
@@ -205,7 +201,6 @@ void bacadata() {
     }
     if (finder.getString("Target", "]", webtext, 25) != 0) {
       target = webtext;
-      targetShow = target;
       //    lcd.setCursor(9,1);lcd.print("Tar:");
       //    lcd.setCursor(13,1);
       lcd.print(target);
@@ -369,20 +364,11 @@ int nilaiakhir_ir = 0;
 
 void decodeIR() // Indicate what key is pressed
 {
-  //  Serial.println(IrReceiver.printIRResultShort(&Serial));
-
-  //  Serial1.println(IrReceiver.decodedIRData.decodedRawData);
-  //  Serial1.println(IrReceiver.decodedIRData.decodedRawData);
-  if (IrReceiver.decodedIRData.decodedRawData == 0) {
-    Serial.println("TESS");
-  }
+  Serial1.println(IrReceiver.decodedIRData.decodedRawData);
   switch (IrReceiver.decodedIRData.decodedRawData) { // compare the value to the following cases
     case 3125149440: // if the value is equal to 0xFD00FF
-      Serial1.println("Tombol 1 pressed");
       wifi();
-      //      lcd.clear();
-      //      lcd.setCursor(0, 0);
-      //      lcd.print("SYNC DATA");
+      Serial1.println("Tombol 1 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol1;
@@ -411,8 +397,8 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break;
     case 3108437760:
-      Serial1.println("Tombol 2 pressed");
       wifi();
+      Serial1.println("Tombol 2 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol2;
@@ -442,8 +428,8 @@ void decodeIR() // Indicate what key is pressed
       bacadata();
       break;
     case 3091726080:
-      Serial1.println("Tombol 3 pressed");
       wifi();
+      Serial1.println("Tombol 3 pressed");
       beep(100);
       urlMode = "/robotik/monitoring/ubahmode.php?mode=";
       urlMode += tombol3;
@@ -727,20 +713,17 @@ void decodeIR() // Indicate what key is pressed
       break;
     case 4061003520:
       lcd.clear();
-      tapHanger = 0;
-      //      lcd.clear();
-      //      lcd.setCursor(0, 0); lcd.print(" PROGRAM  RESET ");
-      //      beep(500);
-      //      Reset();
+      lcd.setCursor(0, 0); lcd.print(" PROGRAM  RESET ");
+      beep(500);
+      Reset();
       break;
-    case 0:
+    case 4294967295:
       decode_repeat(nilaiakhir_ir);
       //    beep(200);
       break;
     case 3910598400:
       beep(500);
-      ESP.restart();
-//      return setup();
+      return setup();
       break;
       //    default:
       //      beep(200);
@@ -757,7 +740,7 @@ void rfid() {
       getID = String(rdm6300.get_tag_id(), HEX);
       Serial1.println(getID);
       digitalWrite(READ_LED_PIN, rdm6300.get_tag_id());
-      output = output + tapHanger;
+      output++;
       Serial1.print("Hasilnya adalah :");
       Serial1.println(output);
       beep(100);
@@ -816,25 +799,22 @@ void rfid() {
 
 void wifi() {
   lcd.setCursor(0, 0);
-  lcd.print("  CEK JARINGAN  ");
-  //  lcd.setCursor(0,1);
-  //  lcd.print("Silahkan  Tunggu");
+  lcd.print(" SYNC TO SERVER ");
+  //  wifi_multi.addAP(ssid1,password);
+  //    beep(10);
+  //  wifi_multi.addAP(ssid2,password);
+  //    beep(10);
+  //  wifi_multi.addAP(ssid3,password);
+  //    beep(10);
+  //  wifi_multi.addAP(ssid4,password);
+  //    beep(10);
+  //  wifi_multi.addAP(ssid5,password);
+  //    beep(10);
+  //  wifi_multi.addAP(ssid6,password);
+  //    beep(10);
 
-//  wifi_multi.addAP(ssid1, password);
-//  beep(10);
-//  wifi_multi.addAP(ssid2, password);
-//  beep(10);
-//  wifi_multi.addAP(ssid3, password);
-//  beep(10);
-//  wifi_multi.addAP(ssid4, password);
-//  beep(10);
-//  wifi_multi.addAP(ssid5, password);
-//  beep(10);
-//  wifi_multi.addAP(ssid6, password);
-//  beep(10);
-
-  if (wifi_multi.run(connectTimeOutPerAP) != WL_CONNECTED) {
-
+  if (wifi_multi.run(connectTimeOutPerAP) != WL_CONNECTED)
+  {
     beep(10);
     Serial1.print(".");
     delay(5000);
@@ -849,11 +829,7 @@ void wifi() {
     lcd.print(WiFi.localIP());
     Serial1.print("Tersambung");
   }
-  //  while (wifi_multi.run(connectTimeOutPerAP) != WL_CONNECTED)
-  //  {
-  //  }
   delay(1000);
-
 
   Serial1.println();
   Serial1.print("Connected to ");
@@ -873,11 +849,10 @@ void setup() {
   lcd.clear();
   Serial1.begin(115200);
   Serial1.print("Connecting to Wi-Fi. . .");
-  //  WiFi.setSleepMode(WIFI_NONE_SLEEP);
+
   WiFi.persistent(false);
   WiFi.mode(WIFI_STA);
   lcd.setCursor(0, 0);
-  lcd.print("    MEMULAI    ");
   lcd.print("  STARTING UP  ");
   lcd.setCursor(0, 1);
   lcd.print("Silahkan  Tunggu");
@@ -899,11 +874,9 @@ void setup() {
   {
     beep(10);
     Serial1.print(".");
-    delay(5000);
+    delay(100);
   }
-  delay(1000);
 
-//  WiFi.printDiag(DEBUG_ESP_PORT);
 
   Serial1.println();
   Serial1.print("Connected to ");
@@ -914,8 +887,6 @@ void setup() {
   //change string to const char*
   Serial1.println((char*)WiFi.macAddress().c_str());
 
-  //  WiFi.setAutoReconnect(true);
-  //  WiFi.persistent(true);
   //convert string to char*
   String str = WiFi.macAddress();
   id_device = new char[str.length() + 1];
@@ -1072,6 +1043,7 @@ void remotHanger() {
 
 
 void loop() {
+
   if (proses == "Bekerja         " && tapHanger == 0) {
     target = out;
     hanger();
