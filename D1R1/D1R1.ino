@@ -726,12 +726,16 @@ void decodeIR() // Indicate what key is pressed
       }
       break;
     case 4061003520:
-      lcd.clear();
-      tapHanger = 0;
-      //      lcd.clear();
-      //      lcd.setCursor(0, 0); lcd.print(" PROGRAM  RESET ");
-      //      beep(500);
-      //      Reset();
+      if (proses == "Bekerja         " ) {
+        lcd.clear();
+        tapHanger = 0;
+      }
+      else {
+        lcd.clear();
+        lcd.setCursor(0, 0); lcd.print(" PROGRAM  RESET ");
+        beep(500);
+        Reset();
+      }
       break;
     case 0:
       decode_repeat(nilaiakhir_ir);
