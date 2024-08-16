@@ -38,6 +38,13 @@ WiFi disconnected after analog pin is used, will fix later. Even ESP community c
 
 ## LOG CHANGED
 
+## PATCH 1.9 (Aug 16)
++ D1R2 firmware has been upgraded
++ More stable WiFi connection 
++ D1R2 limit switch connected to D5 GPIO and GND (due to high logic in D5)
++ D1R1 limit switch connected to D8 GPIO and VCC
++ Bundle program has been attached to RFID function 
+
 ### PATCH 1.8
 + Much feature has been added, can't explain one by one
 + More stable program
