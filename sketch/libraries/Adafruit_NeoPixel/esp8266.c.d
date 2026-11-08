@@ -1,0 +1,22 @@
+C:\Users\PC-P005\Documents\PlatformIO\Projects\Operator_Performance\Operator_Performance\sketch\libraries\Adafruit_NeoPixel\esp8266.c.o: \
+ C:\Users\PC-P005\Documents\Arduino\libraries\Adafruit_NeoPixel\esp8266.c \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266\CommonHFile.h \
+ C:\Users\PC-P005\Documents\PlatformIO\Projects\Operator_Performance\Operator_Performance\sketch\core\D1R1.ino.globals.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/Arduino.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/umm_malloc/umm_malloc_cfgport.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/stdlib_noniso.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/binary.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/esp8266_peri.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2/tools/sdk/include/c_types.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/esp8266_undocumented.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2/tools/sdk/include/eagle_soc.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2/tools/sdk/include/spi_flash.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2/tools/sdk/include/spi_flash_geometry.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/twi.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/Arduino.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/core_esp8266_features.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/core_esp8266_version.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/core_version.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/debug.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\variants\d1/pins_arduino.h \
+ c:\users\pc-p005\appdata\local\arduino15\packages\esp8266\hardware\esp8266\3.1.2\variants\generic\common.h

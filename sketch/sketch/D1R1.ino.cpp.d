@@ -48,7 +48,7 @@ C:\Users\PC-P005\Documents\PlatformIO\Projects\Operator_Performance\Operator_Per
  C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/Stream.h \
  C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/md5.h \
  C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/debug.h \
- C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\variants\d1_mini/pins_arduino.h \
+ C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\variants\d1/pins_arduino.h \
  c:\users\pc-p005\appdata\local\arduino15\packages\esp8266\hardware\esp8266\3.1.2\variants\generic\common.h \
  C:\Users\PC-P005\Documents\Arduino\libraries\rdm6300-master\src/rdm6300.h \
  C:\Users\PC-P005\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\3.1.2\cores\esp8266/HardwareSerial.h \

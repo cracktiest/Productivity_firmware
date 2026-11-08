@@ -7,7 +7,7 @@
   {
     "Sourcefile": null,
     "Include": "",
-    "Includepath": "C:\\Users\\PC-P005\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.1.2\\variants\\d1_mini"
+    "Includepath": "C:\\Users\\PC-P005\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\3.1.2\\variants\\d1"
   },
   {
     "Sourcefile": "C:\\Users\\PC-P005\\Documents\\PlatformIO\\Projects\\Operator_Performance\\Operator_Performance\\sketch\\sketch\\D1R1.ino.cpp",
